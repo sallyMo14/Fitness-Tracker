@@ -112,7 +112,7 @@ def read_data_from_files(files):
 
         participant=filename_parts[0]
         label=filename_parts[1]  
-        category=filename_parts[2].rstrip('123')
+        category=filename_parts[2].rstrip('_MetaWear_2019').rstrip('123')
 
         df=pd.read_csv(f)
         
@@ -188,6 +188,14 @@ data_resampled=pd.concat([df.resample(rule='200ms').apply(resampling).dropna() f
 
 data_resampled.info()
 data_resampled['set']=data_resampled['set'].astype(int)
+
+# --------------------------------------------------------------
+# Check the unique values of the categorical columns
+# --------------------------------------------------------------
+data_resampled['category'].unique()
+data_resampled['label'].unique()
+data_resampled['participant'].unique()
+
 
 # --------------------------------------------------------------
 # Export dataset
