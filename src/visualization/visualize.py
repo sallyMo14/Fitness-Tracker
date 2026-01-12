@@ -42,14 +42,12 @@ participant= 'A'
 label= 'squat'
 
 
-category_df= df.query(f'label == "{label}"').query(f'participant == "{participant}"').reset_index(drop=True)
+category_df= df.query(f'label == "{label}"').query(f'participant == "{participant}"').reset_index()
 fig , ax = plt.subplots(figsize=(20,6))
 category_df.groupby(['category'])['acc_y'].plot()
-ax.set_ylabel('Acceleration Y-axis')
+ax.set_ylabel('Acceleration y-axis')
 ax.set_xlabel('Samples')
-plt.legend(category_df['category'].unique())
-
-
+plt.legend()
 
 # --------------------------------------------------------------
 # Compare participants
